@@ -19,7 +19,7 @@ class DoubleLinkList():
 
     def length(self):
         '''链表长度'''
-        # now用来移动遍历节点
+        # now用来移动遍历节点 
         now = self.__head
         # count记录节点个数
         count = 0

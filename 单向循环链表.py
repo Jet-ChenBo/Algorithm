@@ -39,7 +39,7 @@ class SingleLinkList():
         while now.next != self.__head:
             print(now.elem, end='->')
             now = now.next
-        # 退出循环时。now指向尾节点
+        # 退出循环时，now指向尾节点
         print(now.elem)
         print('尾节点的下一个：',now.next.elem)
 

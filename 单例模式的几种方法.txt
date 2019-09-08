@@ -1,0 +1,45 @@
+作用：确保一个类只有一个实例对象
+有四种方法实现单例模式
+
+第一种：使用__new__方法
+class Singleton():
+    def __init__(self):
+        pass
+
+    def __new__(cls,*args, **kwargs):
+        if not hasattr(cls,'_instance'):
+            cls._instance = object.__new__(cls)
+        return cls._instance
+
+
+第二种：模块
+在一个模块中创建类并且生成实例，其他地方都从这个模块导入实例
+
+第三种：使用装饰器
+def Singleton(cls):
+    instance = {}
+    def wrapper(*args, **kwargs):
+        if cls not in instance:
+            instance[cls] = cls(*args, **kwargs)
+        return instance[cls]
+    return wrapper
+
+@Singleton
+class A():
+    def __init__(self):
+        pass
+
+
+第四种：使用类方法
+class Singleton():
+    def __init__(self):
+        pass
+
+    @classmethod
+    def instance(cls, *args, **kwargs):
+        if not hasattr(cls, '_instance'):
+            Singleton._instance = Singleton(*args, **kwargs)
+        return Singleton._instance
+
+注意：创建实例要用类方法：
+a = Singleton.instance()

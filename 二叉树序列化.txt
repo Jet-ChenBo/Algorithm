@@ -1,0 +1,42 @@
+def serialize(self, root):
+        """Encodes a tree to a single string.
+        
+        :type root: TreeNode
+        :rtype: list
+        """
+        quene = [root]
+        s = []
+        while quene:                 # 层次遍历
+            node = quene.pop(0)
+            if node:
+                s.append(node.val)
+                quene.append(node.left)
+                quene.append(node.right)
+            else:
+                s.append(None)
+        if s:                           # 去掉最后一排的None
+            while s[-1] == None:
+                s.pop(-1)
+        return s
+
+
+
+    def deserialize(self, data):
+        """Decodes your encoded data to tree.
+        
+        :type data: list
+        :rtype: TreeNode
+        """
+        root = TreeNode(data.pop(0))
+        quene = [root]
+        while data:
+            node = quene.pop(0)
+            if node:
+                node.left = TreeNode(data.pop(0))
+               quene.append(node.left)
+	   if data:
+                     node.right = TreeNode(data.pop(0))
+                    quene.append(node.right)
+            else:
+                continue
+        return root

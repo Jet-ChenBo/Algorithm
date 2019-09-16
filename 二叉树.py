@@ -1,5 +1,4 @@
-
-class Node():
+﻿class Node():
     '''节点'''
     def __init__(self, item):
         self.elem = item
